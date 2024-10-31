@@ -1,0 +1,12 @@
+[Environment]
+Temperature=30
+Humidity=70
+Water=110
+
+[Animals]
+Wolf2,5,4,carnivore,8,50, 0.0, 20.0
+Deer2,20,3,herbivore,5,40, 0.0, 20.0
+
+[Plants]
+Oak2,50,10,20,50, 0.0, 20.0
+Grass2,100,1,5,10, 0.0, 20.0
