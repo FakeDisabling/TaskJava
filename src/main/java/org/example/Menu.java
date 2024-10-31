@@ -153,14 +153,14 @@ public class Menu {
                     predictionEcosystem.makeForecast(ecosystem);
                     break;
                 case 5:
-                    SimulationEcosystem simulationEcosystem = new SimulationEcosystem(ecosystem);
+                    SimulationEcosystem simulationEcosystem = new SimulationEcosystem(ecosystem, "log");
                     simulationEcosystem.simulateDay();
                     break;
                 case 6:
                     System.out.println("Enter how many days of stimulation there will be: ");
                     int days = getValidIntInput();
                     scanner.nextLine();
-                    SimulationEcosystem autoSimulationEcosystem = new SimulationEcosystem(ecosystem);
+                    SimulationEcosystem autoSimulationEcosystem = new SimulationEcosystem(ecosystem, "log");
                     for (int i = 0; i < days; i++)
                         autoSimulationEcosystem.simulateDay();
                     break;
@@ -208,6 +208,7 @@ public class Menu {
             System.out.println("4. Add plant");
             System.out.println("5. Update plant");
             System.out.println("6. Delete plant");
+            System.out.println("7. Update environment");
             System.out.println("0. Exit");
 
             int choice = getValidIntInput();
@@ -232,6 +233,8 @@ public class Menu {
                 case 6:
                     deletePlant(ecosystem);
                     break;
+                case 7:
+                    updateEnvironment(ecosystem);
                 case 0:
                     return;
                 default:
@@ -326,6 +329,16 @@ public class Menu {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer.");
+                scanner.nextLine();
+            }
+        }
+    }
+    private double getValidDoubleInput() {
+        while (true) {
+            try {
+                return scanner.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a decimal number.");
                 scanner.nextLine();
             }
         }
@@ -491,6 +504,24 @@ public class Menu {
                 System.out.println("Invalid choice. Please select a valid plant.");
             }
         }
+    }
+    private void updateEnvironment(Ecosystem ecosystem) {
+        System.out.print("Enter new temperature: ");
+        double newTemperature = getValidDoubleInput();
+        ecosystem.getEnvironment().setTemperature(newTemperature);
+
+        System.out.print("Enter new humidity (0-100): ");
+        int newHumidity = getValidIntInRange(0, 100);
+        ecosystem.getEnvironment().setHumidity(newHumidity);
+
+        System.out.print("Enter new water level: ");
+        int newWater = getValidIntInput();
+        ecosystem.getEnvironment().setWater(newWater);
+
+        System.out.print("Enter new sunlight level (0-100): ");
+        int newSunlight = getValidIntInRange(0, 100);
+        ecosystem.getEnvironment().setSunlight(newSunlight);
+
     }
 }
 

@@ -47,7 +47,7 @@ public class PredictionEcosystem {
                 && environment.getTemperature() <= animal.getMaxTemperatureTolerance() + 10.0) ? 1.1 : 0.9;
         double humidityFactor = (environment.getHumidity() > 0 && environment.getHumidity() < 100) ? 1.0 : 0;
         double humidityIdealFactor = (environment.getHumidity() >= 30 && environment.getHumidity() <= 70) ? 1.1 : 0.9;
-        double waterFactor = (environment.getWater() >= animal.getThirst() * animal.getPopulation()) ? 1.0 : 0;
+        double waterFactor = (environment.getWater() >= animal.getPopulation()) ? 1.0 : 0;
         double foodFactor = calculateAnimalFoodFactor(animal, listAnimal, listPlant);
         if (animal.getTypeFood().equals("herbivore")) {
             foodHerbivoreFactor = calculateAnimalHerbivoreFactor(listAnimal, listPlant);

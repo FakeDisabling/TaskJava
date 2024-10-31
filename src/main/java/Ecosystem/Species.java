@@ -11,7 +11,6 @@ abstract class Species {
         this.minTemperatureTolerance = minTemperatureTolerance;
         this.maxTemperatureTolerance = maxTemperatureTolerance;
     }
-
     public String getName() {
         return name;
     }
