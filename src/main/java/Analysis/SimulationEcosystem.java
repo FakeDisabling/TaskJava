@@ -26,21 +26,16 @@ public class SimulationEcosystem {
     public void simulateDay() {
         logger.logInfo("Day " + dayCounter + " begins.");
 
-        // Обновляем параметры климата
         updateEnvironment();
 
-        // Процесс действий для животных и растений
         ecosystem.getAnimalList().forEach(this::processAnimalActions);
         ecosystem.getPlantList().forEach(this::processPlantActions);
 
-        // Проверяем и записываем выживших и умерших животных и растения
         checkWhoIsDeadAnimal(ecosystem.getAnimalList());
         checkWhoIsDeadPlant(ecosystem.getPlantList());
 
-        // Логируем оставшихся в живых
         logSurvivingEntities();
 
-        // Увеличиваем счетчик дней
         dayCounter++;
     }
 
@@ -54,7 +49,6 @@ public class SimulationEcosystem {
         int sunlightRandom = ThreadLocalRandom.current().nextInt(-1, 2) + ecosystem.getEnvironment().getSunlight();
         ecosystem.getEnvironment().setSunlight(Math.max(0, Math.min(100, sunlightRandom)));
 
-        // Записываем в лог случайное событие
         randomEvent();
     }
 
