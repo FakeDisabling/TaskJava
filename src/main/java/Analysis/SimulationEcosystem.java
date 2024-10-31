@@ -20,7 +20,7 @@ public class SimulationEcosystem {
         this.ecosystem = ecosystem;
         this.predictionEcosystem = new PredictionEcosystem();
         this.logger = new Logger(logFilePath);
-        this.dayCounter = 1;  // Начинаем отсчет дней с 1
+        this.dayCounter = 1;
     }
 
     public void simulateDay() {
